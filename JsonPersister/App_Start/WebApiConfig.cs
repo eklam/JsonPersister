@@ -36,9 +36,12 @@ namespace JsonPersister
     {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            actionExecutedContext.Response.Content.Headers.Add("Access-Control-Allow-Origin", "*");
-            actionExecutedContext.Response.Content.Headers.Add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            actionExecutedContext.Response.Content.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            if (actionExecutedContext.Response != null)
+            {
+                actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            }
         }
     }
 }
