@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Filters;
 
 namespace JsonPersister
 {
@@ -9,6 +10,8 @@ namespace JsonPersister
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Filters.Add(new AccessControlFilter());
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{appId}/{resourceId}",
@@ -23,9 +26,19 @@ namespace JsonPersister
             // To disable tracing in your application, please comment out or remove the following line of code
             // For more information, refer to: http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();
-            
+
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(x => x.MediaType == "application/xml");
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
+        }
+    }
+
+    public class AccessControlFilter : ActionFilterAttribute
+    {
+        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
+        {
+            actionExecutedContext.Response.Content.Headers.Add("Access-Control-Allow-Origin", "*");
+            actionExecutedContext.Response.Content.Headers.Add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            actionExecutedContext.Response.Content.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         }
     }
 }
