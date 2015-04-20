@@ -5,12 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace JsonPersister.Controllers
 {
     public class ValuesController : ApiController
     {
+        public HttpResponseMessage Options()
+        {
+            return new HttpResponseMessage { StatusCode = HttpStatusCode.OK };
+        }
+
         public IEnumerable<Resource> Get(string appId)
         {
             return new ResourceRepository(appId).ListAll().ToList();
