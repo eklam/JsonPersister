@@ -2,7 +2,8 @@
 
 ## How to use:
 
-appId is an Id assigned by your application , it is simply a prefix to all of your resources.
+**{app-id}** is an Id assigned by your application, it is simply a prefix to all of your resources
+**{resource-id}** is the Id you want to use for the specific resource
 
 #### Add or Update a resource using POST: 
 
@@ -32,7 +33,7 @@ $.ajax({
 });
 ```
 
-#### To get one specific resource:
+#### To GET one specific resource:
 
 ```js
 $.ajax({
