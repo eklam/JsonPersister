@@ -3,6 +3,7 @@
 ## How to use:
 
 **{app-id}** is an Id assigned by your application, it is simply a prefix to all of your resources
+
 **{resource-id}** is the Id you want to use for the specific resource
 
 #### Add or Update a resource using POST: 
