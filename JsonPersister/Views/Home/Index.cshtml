@@ -1,5 +1,71 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "JsonPersister";
 }
+<div class="jumbotron">
+    <h1>JsonPersister</h1>
+    <p> is a simple web site that store JSON objects for you. I did it for personal use when I am doing simple web/mobile prototypes, and have to store simple objects in the cloud.</p>
+</div>
+<div class="page-header">
+    <h1>How to use:</h1>
+    <p><b>{app-id}</b> is an Id assigned by your application, it is simply a prefix to all of your resources</p>
+    <p><b>{resource-id}</b> is the Id you want to use for the specific resource</p>
+    <h3>Add or Update a resource using POST:</h3>
+    <pre>$.ajax({
+    type: 'POST',
+    url: 'http://jsonpersister.apphb.com/api/values/{app-id}',
+    data: { firstName: 'renan', lastName: 'stigliani', email: 'renan@email.com' },
+    dataType: 'json',
+    success: function(id) {
+        console.log('Resorce stored with id: ' + id)
+    }
+});</pre>
+    <p>Alternatively one can use PUT and specify the resource id:</p>
+    <pre>$.ajax({
+    type: 'POST',
+    url: 'http://jsonpersister.apphb.com/api/values/{app-id}/{resource-id}',
+    data: { firstName: 'renan', lastName: 'stigliani', email: 'renan@email.com' },
+    dataType: 'json',
+    success: function(id) {
+        console.log('Resorce stored')
+    }
+});</pre>
 
-<h2>Index</h2>
+    <h3>To GET one specific resource:</h3>
+    <pre>$.ajax({
+    type: 'GET',
+    url: 'http://jsonpersister.apphb.com/api/values/{app-id}/{resource-id}',
+    dataType: 'json',
+    success: function(data) {
+        console.log(data)
+    },
+});</pre>
+    <p>And to GET all of your resources use:</p>
+    <pre>$.ajax({
+    type: 'GET',
+    url: 'http://jsonpersister.apphb.com/api/values/{app-id}',
+    dataType: 'json',
+    success: function(data) {
+        console.log(data)
+    }
+});</pre>
+
+    <h3>To DELETE a resource:</h3>
+    <pre>$.ajax({
+    type: 'DELETE',
+    url: 'http://jsonpersister.apphb.com/api/values/{app-id}/{resource-id}',
+    dataType: 'json',
+    success: function() {
+        console.log('Resorce deleted')
+    }
+});</pre>
+    <p>To DELETE all of your resources:</p>
+    <pre>$.ajax({
+    type: 'DELETE',
+    url: 'http://jsonpersister.apphb.com/api/values/{app-id}',
+    dataType: 'json',
+    success: function() {
+        console.log('All resources deleted')
+    }
+});</pre>
+
+</div>
