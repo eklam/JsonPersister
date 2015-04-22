@@ -2,7 +2,7 @@
 
 ## How to use:
 
-**{app-id}** is an Id assigned by your application, it is simply a prefix to all of your resources
+**{app-id}** is an Id assigned by your application, it is simply a prefix to all of your resources. I recommend using a GUID, you can [generate you here](http://createguid.com/)
 
 **{resource-id}** is the Id you want to use for the specific resource
 
@@ -24,7 +24,7 @@ Alternatively one can use **PUT** and specify the resource id:
 
 ```js
 $.ajax({
-	type: 'POST',
+	type: 'PUT',
 	url: 'http://jsonpersister.apphb.com/api/values/{app-id}/{resource-id}',
 	data: { firstName: 'renan', lastName: 'stigliani', email: 'renan@email.com' },
 	dataType: 'json',

@@ -7,7 +7,7 @@
 </div>
 <div class="page-header">
     <h1>How to use:</h1>
-    <p><b>{app-id}</b> is an Id assigned by your application, it is simply a prefix to all of your resources</p>
+    <p><b>{app-id}</b> is an Id assigned by your application, it is simply a prefix to all of your resources. You can use any string as an application Id. I recommend using a GUID, you can <a href="http://createguid.com/" target="_blank">generate you here</a></p>
     <p><b>{resource-id}</b> is the Id you want to use for the specific resource</p>
     <h3>Add or Update a resource using POST:</h3>
     <pre>$.ajax({
@@ -21,7 +21,7 @@
 });</pre>
     <p>Alternatively one can use PUT and specify the resource id:</p>
     <pre>$.ajax({
-    type: 'POST',
+    type: 'PUT',
     url: 'http://jsonpersister.apphb.com/api/values/{app-id}/{resource-id}',
     data: { firstName: 'renan', lastName: 'stigliani', email: 'renan@email.com' },
     dataType: 'json',
